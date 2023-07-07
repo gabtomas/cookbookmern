@@ -1,18 +1,25 @@
 const express = require("express");
-const app = express();
-
-const tryConnect = require("./dbConnection");
+const materialsRouter = require("./controllers/materials");
 
 const PORT = process.env.PORT || 5000;
 
-tryConnect();
-/*middleware */
-app.use(express.json({ extended: false }));
+async function main() {
+    // await createCollection();
 
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-});
+    const app = express();
 
-app.listen(3000, () => {
-    console.log(`app is listening on port ${PORT}`);
-});
+    app.get("/", (req, res) => {
+        res.send("Hello World!");
+    });
+
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+
+    app.use("/materials", materialsRouter);
+
+    app.listen(PORT, () => {
+        console.log(`app is listening on port ${PORT}`);
+    });
+}
+
+main();
