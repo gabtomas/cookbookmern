@@ -9,6 +9,14 @@ const materialSchema = new Schema({
         type: String,
         required: true,
     },
+    baseUnit: {
+        type: String,
+        required: true,
+    },
+    pricePerUnit: {
+        type: Number,
+        required: true,
+    },
 });
 
 //create model for material
