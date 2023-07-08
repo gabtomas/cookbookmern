@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
     const result = await MaterialDao.add(req.body);
     res.status(200).json(result);
-    console.log("result", result);
+    // console.log("result", result);
 });
 
 module.exports = router;

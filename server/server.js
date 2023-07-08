@@ -1,5 +1,6 @@
 const express = require("express");
 const materialsRouter = require("./controllers/materials");
+const recipeRouter = require("./controllers/recipe");
 
 const PORT = process.env.PORT || 5000;
 
@@ -16,6 +17,8 @@ async function main() {
     app.use(express.urlencoded({ extended: true }));
 
     app.use("/materials", materialsRouter);
+
+    app.use("/recipes", recipeRouter);
 
     app.listen(PORT, () => {
         console.log(`app is listening on port ${PORT}`);
